@@ -7,12 +7,14 @@ import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import CreateBook from "./components/CreateBook";
+import EditBooks from "./components/EditBooks";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import CreateStudent from "./components/create-student.component";
 import EditStudent from "./components/edit-student.component";
 import StudentList from "./components/student-list.component";
+import ListBooks from "./components/ListBooks";
 
 function App() {
   return (
@@ -28,6 +30,16 @@ function App() {
               </Navbar.Brand>
 
               <Nav className="justify-content-end">
+                <Nav>
+                  <Link to={"/create-book"} className="nav-link">
+                    Create Book
+                  </Link>
+                </Nav>
+                <Nav>
+                  <Link to={"/books-list"} className="nav-link">
+                    List Books
+                  </Link>
+                </Nav>
                 <Nav>
                   <Link to={"/create-student"} className="nav-link">
                     Create Student
@@ -73,6 +85,16 @@ function App() {
                     exact
                     path="/create-book"
                     component={(props) => <CreateBook {...props} />}
+                  />
+                  <Route
+                    exact
+                    path="/books-list"
+                    component={(props) => <ListBooks {...props} />}
+                  />
+                  <Route
+                    exact
+                    path="/edit-book/:id"
+                    component={(props) => <EditBooks {...props} />}
                   />
                 </Switch>
               </div>
